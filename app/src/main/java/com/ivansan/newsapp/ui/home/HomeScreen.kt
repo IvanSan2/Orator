@@ -2,8 +2,10 @@ package com.ivansan.newsapp.ui.home
 
 
 import android.content.SharedPreferences
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -14,9 +16,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ivansan.newsapp.ui.composable.NewsCarousel
 import com.ivansan.newsapp.ui.composable.CategoryTabRow
+import com.ivansan.newsapp.ui.composable.ErrorPage
 import com.ivansan.newsapp.ui.composable.SharedViewModel
 import com.ivansan.newsapp.ui.settings.PREFERENCES_LANGUAGE
-
 
 //comp
 
@@ -38,7 +40,7 @@ fun HomeScreen(
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        if (!news.isNullOrEmpty()){
+        if (news?.isNotEmpty() == true){
             NewsCarousel(list = news!!, navController = navController, sharedViewModel = sharedViewModel)
             CategoryTabRow(
                 news!!,
@@ -47,6 +49,17 @@ fun HomeScreen(
                 viewModel,
                 preferences
             )
+        }
+        else if (news?.isEmpty() == true){
+            ErrorPage()
+        } else { // Loading error page
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                CircularProgressIndicator()
+            }
         }
     }
 }

@@ -185,10 +185,9 @@ fun NewsPage(navController: NavController, sharedViewModel: SharedViewModel) {
                         Text(
                             text = item!!.title,
                             color = Color.White,
-//                    maxLines = 2,
                             overflow = TextOverflow.Clip,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp,
+                            fontSize = 22.sp,
                             textAlign = TextAlign.Center,
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -259,17 +258,20 @@ fun NewsPage(navController: NavController, sharedViewModel: SharedViewModel) {
 
 fun getDateDif(pubDate:String):String{
 
-    val pubDate = LocalDateTime.parse(pubDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+    val currentPubDate = LocalDateTime.parse(pubDate, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
     val currentDate = LocalDateTime.now()
-    val daysDifValue = pubDate.until(currentDate, ChronoUnit.DAYS)
-    val hoursDifValue = pubDate.until(currentDate, ChronoUnit.HOURS)
-    val minutesDifValue = pubDate.until(currentDate, ChronoUnit.MINUTES)%60
+    val daysDifValue = currentPubDate.until(currentDate, ChronoUnit.DAYS)
+    val hoursDifValue = currentPubDate.until(currentDate, ChronoUnit.HOURS)
+    val minutesDifValue = currentPubDate.until(currentDate, ChronoUnit.MINUTES)%60
 
 
-     if (daysDifValue>0)
-         return "Published $daysDifValue days ago"
+     if (daysDifValue.toInt() == 1)
+         return "Published $daysDifValue day ago"
 
-    return if (hoursDifValue<0)
+     if (daysDifValue.toInt()>1)
+        return "Published $daysDifValue days ago"
+
+    return if (hoursDifValue.toInt()<0)
         "Published $minutesDifValue ago"
     else "Published $hoursDifValue hours and $minutesDifValue ago"
 
