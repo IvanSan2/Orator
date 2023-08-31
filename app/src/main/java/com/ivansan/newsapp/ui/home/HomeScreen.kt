@@ -50,9 +50,7 @@ fun HomeScreen(
                 preferences
             )
         }
-        else if (news?.isEmpty() == true){
-            ErrorPage()
-        } else { // Loading error page
+        else if (news?.isEmpty() == true){ // Loading error page
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -60,6 +58,9 @@ fun HomeScreen(
             ) {
                 CircularProgressIndicator()
             }
+
+        } else {
+            ErrorPage()
         }
     }
 }
