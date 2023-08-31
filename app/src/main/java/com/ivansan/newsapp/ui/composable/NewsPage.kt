@@ -206,7 +206,8 @@ fun NewsPage(navController: NavController, sharedViewModel: SharedViewModel) {
                                 text = getDateDif(item!!.pubDate),
                                 color = Color.White,
                                 fontStyle = FontStyle.Italic,
-
+                                fontSize = 15.sp,
+                                maxLines = 1
                                 )
                             item!!.sourceId?.let {
                                 Text(
@@ -216,9 +217,10 @@ fun NewsPage(navController: NavController, sharedViewModel: SharedViewModel) {
                                         ) else it.toString()
                                     },
                                     fontWeight = FontWeight.SemiBold,
-                                    fontSize = 16.sp,
+                                    fontSize = 15.sp,
                                     fontStyle = FontStyle.Italic,
-                                    color = Color.White
+                                    color = Color.White,
+                                    maxLines = 1
                                 )
                             }
                         }

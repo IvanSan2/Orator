@@ -84,11 +84,13 @@ Row(modifier = Modifier
 
         ) {
             Text(text = item.sourceId?: "",
-                fontSize = 14.sp
+                fontSize = 13.sp,
+                maxLines = 1
             )
             Text(text = item.pubDate,
-                fontSize = 14.sp,
-                textAlign = TextAlign.End
+                fontSize = 13.sp,
+                textAlign = TextAlign.End,
+                maxLines = 1
             )
         }
     }
