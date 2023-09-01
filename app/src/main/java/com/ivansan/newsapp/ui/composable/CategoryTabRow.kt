@@ -12,7 +12,7 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.style.TextOverflow
@@ -29,7 +29,7 @@ fun CategoryTabRow(
     navController: NavController,
     sharedViewModel: SharedViewModel,
     viewModel: HomeViewModel = hiltViewModel(),
-    preferences: SharedPreferences
+    preferences: SharedPreferences,
 ){
 
     val isSharedLanguage = !preferences.getString(PREFERENCES_LANGUAGE,null).isNullOrEmpty()
@@ -44,13 +44,13 @@ fun CategoryTabRow(
     val politicsNews by if (isSharedLanguage) viewModel.politicsNewsByLanguage.observeAsState() else  viewModel.politicsNews.observeAsState()
     val worldNews by if (isSharedLanguage) viewModel.worldNewsByLanguage.observeAsState() else  viewModel.worldNews.observeAsState()
 
-var state by remember { mutableStateOf(0) }
+var state by remember { mutableIntStateOf(0) }
 val titles = listOf("All","Top","Sport","Business","Entertainment","Health","Technology","Food","Politics","World")
-Column {
+Column() {
 
     ScrollableTabRow(
         selectedTabIndex = state,
-        edgePadding = 0.dp
+        edgePadding = 0.dp,
         ) {
         titles.forEachIndexed { index, title ->
             Tab(

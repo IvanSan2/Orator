@@ -123,8 +123,9 @@ dependencies {
     //AsyncImage
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    //pager
-    // implementation("com.google.accompanist:accompanist-pager:0.27.1")
+    //pager for Tabs
+    implementation ("com.google.accompanist:accompanist-pager:0.27.1")
+    implementation ("com.google.accompanist:accompanist-pager-indicators:0.23.0")
 
     //icons
     implementation ("androidx.compose.material:material-icons-extended:1.5.0")

@@ -3,7 +3,6 @@ package com.ivansan.newsapp.ui.composable
 
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.defaultDecayAnimationSpec
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
@@ -21,8 +20,6 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -64,6 +61,7 @@ fun NewsCarousel(
 ) {
     val pagerState: PagerState = rememberPagerState(pageCount = { 10 })
     val isDragged by pagerState.interactionSource.collectIsDraggedAsState()
+
     if (isDragged.not()) {
         with(pagerState) {
 
@@ -79,7 +77,9 @@ fun NewsCarousel(
         }
     }
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Box {
 
                 HorizontalPager(

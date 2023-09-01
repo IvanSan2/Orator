@@ -12,6 +12,7 @@ interface NewsService {
     @GET("api/1/news")
     suspend fun getNews(
         @Query("language") lang: String? = null,
+        @Query("image") img: String? = "1",
         @Query("page") nextPage: String? = null
     ): NewsResponse
 
@@ -20,6 +21,7 @@ interface NewsService {
     @GET("api/1/news")
     suspend fun getNewsBySearch(
         @Query("q") param: String? = null,
+        @Query("image") img: String? = "1",
         @Query("page") nextPage: String? = null
     ): NewsResponse
 

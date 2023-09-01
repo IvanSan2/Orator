@@ -31,9 +31,7 @@ fun HomeScreen(
 ) {
 
     val isSharedLanguage = !preferences.getString(PREFERENCES_LANGUAGE,null).isNullOrEmpty()
-
     val news by if (isSharedLanguage) viewModel.newsByLanguage.observeAsState() else viewModel.news.observeAsState()
-
 
     Column(
         modifier = Modifier
@@ -41,16 +39,24 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         if (news?.isNotEmpty() == true){
-            NewsCarousel(list = news!!, navController = navController, sharedViewModel = sharedViewModel)
-            CategoryTabRow(
-                news!!,
-                navController = navController,
-                sharedViewModel = sharedViewModel,
-                viewModel,
-                preferences
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                ){
+                NewsCarousel(list = news!!, navController = navController, sharedViewModel = sharedViewModel)
+                CategoryTabRow(
+                    list = news!!,
+                    navController = navController,
+                    sharedViewModel = sharedViewModel,
+                    viewModel = viewModel,
+                    preferences = preferences
+                )
+            }
+
         }
         else if (news?.isEmpty() == true){ // Loading error page
+            ErrorPage()
+        } else {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -59,8 +65,6 @@ fun HomeScreen(
                 CircularProgressIndicator()
             }
 
-        } else {
-            ErrorPage()
         }
     }
 }
