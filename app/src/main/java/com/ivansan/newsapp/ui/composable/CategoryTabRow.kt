@@ -15,7 +15,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -39,6 +38,9 @@ fun CategoryTabRow(
 
     val isSharedLanguage = !preferences.getString(PREFERENCES_LANGUAGE, null).isNullOrEmpty()
 
+    val pagerState = rememberPagerState()
+    val scope = rememberCoroutineScope()
+
     val topNews by if (isSharedLanguage) viewModel.topNewsByLanguage.observeAsState() else viewModel.topNews.observeAsState()
     val sportNews by if (isSharedLanguage) viewModel.sportNewsByLanguage.observeAsState() else viewModel.sportNews.observeAsState()
     val businessNews by if (isSharedLanguage) viewModel.businessNewsByLanguage.observeAsState() else viewModel.businessNews.observeAsState()
@@ -48,6 +50,18 @@ fun CategoryTabRow(
     val foodNews by if (isSharedLanguage) viewModel.foodNewsByLanguage.observeAsState() else viewModel.foodNews.observeAsState()
     val politicsNews by if (isSharedLanguage) viewModel.politicsNewsByLanguage.observeAsState() else viewModel.politicsNews.observeAsState()
     val worldNews by if (isSharedLanguage) viewModel.worldNewsByLanguage.observeAsState() else viewModel.worldNews.observeAsState()
+
+    val allCategoryList = listOf<List<Result?>?>(
+        list,
+        topNews,
+        sportNews,
+        businessNews,
+        entertainmentNews,
+        healthNews,
+        technologyNews,
+        foodNews,
+        politicsNews,
+        worldNews)
 
     val titles = listOf(
         "All",
@@ -61,8 +75,8 @@ fun CategoryTabRow(
         "Politics",
         "World"
     )
-    val pagerState = rememberPagerState()
-    val scope = rememberCoroutineScope()
+
+
     Column() {
 
         ScrollableTabRow(
@@ -78,129 +92,24 @@ fun CategoryTabRow(
                         }
                     },
                     text = {
-                        Text(
-                            text = title,
-                            maxLines = 2,
-                            overflow = TextOverflow.Ellipsis,
-                        )
+                        Text(text = title)
                     }
                 )
             }
         }
 
-        HorizontalPager(state = pagerState, count = titles.size) {
+        HorizontalPager(state = pagerState, count = allCategoryList.size) {index ->
             LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                contentPadding = PaddingValues(8.dp)
-            ) {
-                when (pagerState.currentPage) {
-                    0 -> itemsIndexed(list) { _, item ->
-                        NewsListItem(
-                            item = item,
-                            navController,
-                            sharedViewModel
-                        )
-                    }
-
-                    1 -> topNews?.let {
-                        itemsIndexed(topNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    2 -> sportNews?.let {
-                        itemsIndexed(sportNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    3 -> businessNews?.let {
-                        itemsIndexed(businessNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    4 -> entertainmentNews?.let {
-                        itemsIndexed(entertainmentNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    5 -> healthNews?.let {
-                        itemsIndexed(healthNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    6 -> technologyNews?.let {
-                        itemsIndexed(technologyNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    7 -> foodNews?.let {
-                        itemsIndexed(foodNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    8 -> politicsNews?.let {
-                        itemsIndexed(politicsNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-                    9 -> worldNews?.let {
-                        itemsIndexed(worldNews!!) { _, item ->
-                            NewsListItem(
-                                item = item,
-                                navController,
-                                sharedViewModel
-                            )
-                        }
-                    }
-
-
-                    else -> itemsIndexed(list) { _, item ->
-                        NewsListItem(
-                            item = item,
-                            navController,
-                            sharedViewModel
-                        )
-                    }
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            contentPadding = PaddingValues(8.dp)
+            ){
+                itemsIndexed(allCategoryList[index]!!){_,item ->
+                    NewsListItem(
+                        item = item!!,
+                        navController,
+                        sharedViewModel
+                    )
                 }
 
             }
