@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,6 +13,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SearchBar
@@ -22,6 +24,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -43,6 +46,7 @@ fun SearchScreen(
     var text by remember { mutableStateOf("") }
     var active by remember { mutableStateOf(false) }
     val news by viewModel.searchNews.observeAsState()
+    val isLoading = viewModel.isLoading.observeAsState()
 
     //TODO: add search history from db
     //var historyItems = remember {}
@@ -54,14 +58,14 @@ fun SearchScreen(
                 .padding(8.dp),
             query = text,
             onQueryChange = {
-                            text = it
+                text = it
             },
             onSearch = {
-                       active = false
-                        viewModel.searchNews(it)
+                active = false
+                viewModel.searchNews(it)
             },
             active = false, // TODO: add history search and change to active
-            onActiveChange ={
+            onActiveChange = {
                 active = it
             },
             placeholder = {
@@ -71,28 +75,40 @@ fun SearchScreen(
                 Icon(imageVector = Icons.Default.Search, contentDescription = "Search icon")
             },
             trailingIcon = {
-                Icon(modifier = Modifier.clickable {
+                Icon(
+                    modifier = Modifier.clickable {
                         text = ""
                         active = false
-                },
+                    },
                     imageVector = Icons.Default.Close,
-                    contentDescription = "Close icon")
+                    contentDescription = "Close icon"
+                )
             },
         ) {
 
         }
-        news?.let{
-            LazyColumn(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp) ,
-                contentPadding = PaddingValues(8.dp)
-            ){
-                itemsIndexed(news!!){ _, item ->
-                    NewsListItem(
-                        item = item.toResult(),
-                        navController,
-                        sharedViewModel
-                    )
+        if (isLoading.value == true) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        } else {
+            news?.let {
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    contentPadding = PaddingValues(8.dp)
+                ) {
+                    itemsIndexed(news!!) { _, item ->
+                        NewsListItem(
+                            item = item.toResult(),
+                            navController,
+                            sharedViewModel
+                        )
+                    }
                 }
             }
         }

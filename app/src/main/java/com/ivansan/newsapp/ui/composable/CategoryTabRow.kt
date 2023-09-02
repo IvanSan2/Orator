@@ -37,7 +37,6 @@ fun CategoryTabRow(
 ) {
 
     val isSharedLanguage = !preferences.getString(PREFERENCES_LANGUAGE, null).isNullOrEmpty()
-
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
 

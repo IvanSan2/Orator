@@ -17,6 +17,9 @@ class SearchViewModel @Inject constructor(private val newsService: NewsService):
     private val _searchNews: MutableLiveData<List<ResultDTO>> = MutableLiveData()
     val searchNews: LiveData<List<ResultDTO>> = _searchNews
 
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isLoading: MutableLiveData<Boolean> = _isLoading
+
 
     fun searchNews(query: String?){
         query?.let{
@@ -26,10 +29,13 @@ class SearchViewModel @Inject constructor(private val newsService: NewsService):
             }
             viewModelScope.launch {
                 try {
+                    _isLoading.value = true
                     val newsResponse = newsService.getNewsBySearch(param = '"' + it + '"')
                     _searchNews.value = newsResponse.results
                 } catch (e: RuntimeException){
                     Log.d("ErrorCatch",e.message.toString())
+                }finally {
+                    _isLoading.value = false
                 }
             }
 
