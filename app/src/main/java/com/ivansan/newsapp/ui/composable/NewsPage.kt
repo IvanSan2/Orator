@@ -244,7 +244,8 @@ fun NewsPage(navController: NavController, sharedViewModel: SharedViewModel) {
                                 .padding(start = 24.dp, end = 24.dp, top = 32.dp, bottom = 32.dp),
                             text = item!!.content ?: "",
                             fontSize = 16.sp,
-                            fontWeight = FontWeight.Medium
+                            fontWeight = FontWeight.Medium,
+                            textAlign = if (item?.language == "hebrew" || item?.language == "arabic") TextAlign.End else null
 
                         )
 

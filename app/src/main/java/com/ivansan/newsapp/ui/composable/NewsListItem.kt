@@ -67,10 +67,14 @@ Row(modifier = Modifier
             fontSize = 14.sp,
             fontStyle = FontStyle.Italic
             )
-        Text(text = item.title,
+        Text(
+            modifier = Modifier.padding(horizontal = 4.dp),
+            text = item.title,
             fontSize = 16.sp,
+            fontWeight = FontWeight(500),
             maxLines = 2,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
+            textAlign = if (item.language == "hebrew" || item.language == "arabic") TextAlign.End else null
         )
 
         }
