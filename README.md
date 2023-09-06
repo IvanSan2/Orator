@@ -6,21 +6,18 @@
 
 <div align="center">
 
+![GitHub Repo stars](https://img.shields.io/github/stars/IvanSan2/Orator)
 ![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/IvanSan2/Orator)
 ![GitHub forks](https://img.shields.io/github/forks/IvanSan2/Orator)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/IvanSan2/Orator)
-![GitHub Repo stars](https://img.shields.io/github/stars/IvanSan2/Orator)
+![GitHub watchers](https://img.shields.io/github/watchers/IvanSan2/Orator)
 
 </div>
 
-## 📰 Description
+## 📑 Content
 
-**Orator** is a simple News App built with Kotlin Jetpack Compose. In this app, there is a Home, Search, Favorites and Settings pages. Home page display animated carousel with 10 latest news and lists distributed by categories with news from newsdata.io. Also app provides you to chose one of the following languages: English, Russian, Hebrew, Arabic or by default all languages includig those listed. You can use the search page page for searching news by keywords. Additionally you can save news in favorites and they are stored in local room database as well as all previously loaded news from network, which means that app is working without connection to internet too. This app has amazing design that adjusts to phone colors and themes and has gestures effects.
-
-## Content
-
+- [📑 Content](#-content)
 - [📰 Description](#-description)
-- [Content](#content)
 - [👀 Screenshots ](#-screenshots-)
 - [⛓️ Dependencies ](#️-dependencies-)
 - [🏁 Getting Started ](#-getting-started-)
@@ -30,6 +27,10 @@
 - [⛏️ Built With ](#️-built-with-)
 - [🗞️ API Credit ](#️-api-credit-)
 - [✍️ Authors ](#️-authors-)
+
+## 📰 Description
+
+**Orator** is a simple News App built with Kotlin Jetpack Compose. In this app, there is a Home, Search, Favorites and Settings pages. Home page display animated carousel with 10 latest news and lists distributed by categories with news from newsdata.io. Also app provides you to chose one of the following languages: English, Russian, Hebrew, Arabic or by default all languages includig those listed. You can use the search page page for searching news by keywords. Additionally you can save news in favorites and they are stored in local room database as well as all previously loaded news from network, which means that app is working without connection to internet too. This app has amazing design that adjusts to phone colors and themes and has gestures effects.
 
 ## 👀 Screenshots <a name = "screenshots"></a>
 
