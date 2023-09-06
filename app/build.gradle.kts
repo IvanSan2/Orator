@@ -68,7 +68,7 @@ dependencies {
     implementation ("androidx.navigation:navigation-compose:$navVersion")
 
 
-    //hilt:
+    //Hilt:
     val hiltVersion = "2.47"
     implementation ("com.google.dagger:hilt-android:$hiltVersion")
     kapt ("com.google.dagger:hilt-compiler:$hiltVersion")
@@ -85,7 +85,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
 
 
-    //coroutines:
+    //Coroutines:
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     val ktxVersion = "2.6.1"
@@ -94,7 +94,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-runtime-compose:$ktxVersion")
 
 
-    //room database:
+    //Room database:
     val roomVersion = "2.5.2"
     implementation ("androidx.room:room-runtime:$roomVersion")
     // annotationProcessor ("androidx.room:room-compiler:$roomVersion")
@@ -106,7 +106,7 @@ dependencies {
     implementation ("androidx.room:room-paging:$roomVersion")
     implementation ("androidx.room:room-ktx:$roomVersion")
 
-    //retrofit:
+    //Retrofit:
     val retrofitVersion = "2.9.0"
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
@@ -114,20 +114,20 @@ dependencies {
     implementation ("com.lembergsolutions:retrofitretry:1.0.0")
 
 
-    //logger for retrofit
+    //Logger for retrofit
     implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
-    //material3
+    //Material3
     implementation ("androidx.compose.material3:material3:1.1.1")
 
     //AsyncImage
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    //pager for Tabs
+    //Pager for Tabs
     implementation ("com.google.accompanist:accompanist-pager:0.27.1")
     implementation ("com.google.accompanist:accompanist-pager-indicators:0.23.0")
 
-    //icons
+    //Material extra icons
     implementation ("androidx.compose.material:material-icons-extended:1.5.0")
 
 
