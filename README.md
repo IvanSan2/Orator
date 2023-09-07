@@ -57,35 +57,22 @@
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
 These instructions will get you a copy of the project up and running on your local machine for development
-and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
+> To run this app as well and see all features, you need to register at [NewsData.io](https://newsdata.io/) and get the ApiKey.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
+1. Clone the project to your local machine.
+2. Open the project with [Android Studio](https://developer.android.com/studio).
+3. Run the project with emulator or build the APK **`( Build > Build Bundle(s)/APK(s) > Build APK(s) )`**
+4. At settings screen (first screen that will load), enter you`r ApiKey from [NewsData.io](https://newsdata.io/)
 
 ## 🎲 Usage <a name="usage"></a>
 
-Add Api key in setings screen `(requared)`, chose your language `(optional)` and enjoy 😉
+Add Api key in setings screen **`(requared)`**, chose your language `(optional)` and enjoy 😉
 
 ## ⛏️ Built With <a name = "tech_stack"></a>
 
