@@ -2,7 +2,7 @@
   <a href="" rel="noopener">
  <img src="https://i.imgur.com/U7K5i08.png" alt="Project logo"></a>
 </p>
-<h1 align="center">Orator</h1>
+<h1 align="center"><span><img src="https://i.imgur.com/bNAhtTj.png" alt="Project logo" height = "25"></span> Orator</h1>
 
 <div align="center">
 
@@ -30,7 +30,7 @@
 
 ## 📰 Description
 
-**Orator** is a simple News App built with Kotlin Jetpack Compose. In this app, there is a Home, Search, Favorites and Settings pages. Home page display animated carousel with 10 latest news and lists distributed by categories with news from newsdata.io. Also app provides you to chose one of the following languages: English, Russian, Hebrew, Arabic or by default all languages includig those listed. You can use the search page page for searching news by keywords. Additionally you can save news in favorites and they are stored in local room database as well as all previously loaded news from network, which means that app is working without connection to internet too. This app has amazing design that adjusts to phone colors and themes and has gestures effects.
+**Orator** is a simple News App built with Kotlin Jetpack Compose. In this app, there is a Home, Search, Favorites and Settings pages. Home page display animated carousel with 10 latest news and lists distributed by categories with news from newsdata.io. Also app provides you to chose one of the following languages: English, Russian, Hebrew, Arabic or by default all languages includig those listed. You can use the search page page for searching news by keywords. Additionally you can save news in favorites and they are stored in local room database as well as all previously loaded news from network, which means that app is working without connection to internet too. This app has design that adjusts to phone colors and themes and has gestures effects.
 
 ## 👀 Screenshots <a name = "screenshots"></a>
 
@@ -68,7 +68,7 @@ and testing purposes.
 1. Clone the project to your local machine.
 2. Open the project with [Android Studio](https://developer.android.com/studio).
 3. Run the project with emulator or build the APK **`( Build > Build Bundle(s)/APK(s) > Build APK(s) )`**
-4. At settings screen (first screen that will load), enter you`r ApiKey from [NewsData.io](https://newsdata.io/)
+4. At settings screen (first screen that will load), enter your ApiKey from [NewsData.io](https://newsdata.io/)
 
 ## 🎲 Usage <a name="usage"></a>
 
